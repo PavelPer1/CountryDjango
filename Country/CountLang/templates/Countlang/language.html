@@ -1,0 +1,35 @@
+{% extends './index.html' %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block abz %}
+
+{% for i in mas %}
+<div class="btn-group me-2">
+    <a href="{% url 'language' %}/{{i}}"><h3>{{i}}</h3></a>
+</div>
+{% endfor %}
+{% endblock %}
+
+{% block content %}
+        <ol>
+    {% for i in page_object %}
+
+        <div class="container">
+            <a href="{% url 'language' %}/{{i}}"><h1><li>{{i}}</li></h1></a>
+        </div>
+
+    {% endfor %}
+    </ol>
+<div class="container">
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {% for p in page_object.paginator.page_range %}
+      <li class="page-item"><a class="page-link" href="?page={{p}}">{{p}}</a></li>
+    {% endfor %}
+  </ul>
+</nav>
+</div>
+{% endblock %}
